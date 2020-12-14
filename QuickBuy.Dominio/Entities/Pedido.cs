@@ -1,11 +1,12 @@
 ﻿using QuickBuy.Dominio.ObjetoValor;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace QuickBuy.Dominio.Entities
 {
-    class Pedido
+    public class Pedido : Entity
     {
         private int Id { get; set; }
         private int idCliente { get; set; }
@@ -20,5 +21,17 @@ namespace QuickBuy.Dominio.Entities
         private int IdFormaPagamento { get; set; }
         private FormaPagamento FormaPagamento { get; set; }
 
+        public override void Validate()
+        {
+            if (ItensPedidos.Any())
+            {
+                this.AdicionarCritica("warning: produto sem item");
+            }
+
+            if (string.IsNullOrEmpty(Cep))
+            {
+                this.AdicionarCritica("campo não pode estar vazio");
+            }
+        }
     }
 }
