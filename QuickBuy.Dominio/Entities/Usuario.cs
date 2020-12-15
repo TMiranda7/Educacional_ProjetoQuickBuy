@@ -6,11 +6,11 @@ namespace QuickBuy.Dominio.Entities
 {
     public class Usuario : Entity
     {
-        private int Id { get; set; }
-        private string Name { get; set; }
-        private string Email { get; set; }
-        private string Senha { get; set; }
-        private ICollection<Pedido> Pedidos { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public string Email { get; set; }
+        public string Senha { get; set; }
+        public virtual ICollection<Pedido> Pedidos { get; set; }
 
         public override void Validate()
         {

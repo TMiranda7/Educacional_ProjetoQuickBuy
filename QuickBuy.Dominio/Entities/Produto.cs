@@ -6,9 +6,9 @@ namespace QuickBuy.Dominio.Entities
 {
     public class Produto : Entity
     {
-        private int Id { get; set; }
-        private string descricao { get; set; }
-        private decimal preco { get; set; }
+        public int Id { get; set; }
+        public string descricao { get; set; }
+        public decimal preco { get; set; }
 
         public override void Validate()
         {

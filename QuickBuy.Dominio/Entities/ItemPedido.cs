@@ -4,11 +4,11 @@ using System.Text;
 
 namespace QuickBuy.Dominio.Entities
 {
-    class ItemPedido : Entity
+    public class ItemPedido : Entity
     {
-        private int Id { get; set; }
-        private int idProduto { get; set; }
-        private int Qntd { get; set; }
+        public int Id { get; set; }
+        public int idProduto { get; set; }
+        public int Qntd { get; set; }
 
         public override void Validate()
         {

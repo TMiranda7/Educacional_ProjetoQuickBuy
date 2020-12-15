@@ -3,8 +3,11 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.SpaServices.AngularCli;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using QuickBuy.Repositorio;
+using QuickBuy.Repositorio.Contexto;
 
 namespace QuickBuy.web
 {
@@ -12,7 +15,10 @@ namespace QuickBuy.web
     {
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            var builder = new ConfigurationBuilder();
+            builder.AddJsonFile("Connection.json", optional:true , reloadOnChange: true);
+            Configuration = builder.Build();
+
         }
 
         public IConfiguration Configuration { get; }
@@ -21,6 +27,8 @@ namespace QuickBuy.web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            var StringDeConexao = Configuration.GetConnectionString("MySQLConnection");
+            services.AddDbContext<QuickBayContext>(options => options.UseMySql(StringDeConexao, migrate => migrate.MigrationsAssembly("QuickBuy.Repositorio")));
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

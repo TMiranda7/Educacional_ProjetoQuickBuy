@@ -8,18 +8,19 @@ namespace QuickBuy.Dominio.Entities
 {
     public class Pedido : Entity
     {
-        private int Id { get; set; }
-        private int idCliente { get; set; }
-        private DateTime dataCompra { get; set; }
-        private DateTime dataEntrega { get; set; }
-        private string Cep { get; set; }
-        private string Bairro { get; set; }
-        private string Cidade { get; set; }
-        private string Estado { get; set; }
-        private int numeroEnd { get; set; }
-        private ICollection<ItemPedido> ItensPedidos { get;set;}
-        private int IdFormaPagamento { get; set; }
-        private FormaPagamento FormaPagamento { get; set; }
+        public int Id { get; set; }
+        public int idUsuario { get; set; }
+        public virtual Usuario Usuario { get; set; }
+        public DateTime dataCompra { get; set; }
+        public DateTime dataEntrega { get; set; }
+        public string Cep { get; set; }
+        public string Bairro { get; set; }
+        public string Cidade { get; set; }
+        public string Estado { get; set; }
+        public int numeroEnd { get; set; }
+        public ICollection<ItemPedido> ItensPedidos { get;set;}
+        public int IdFormaPagamento { get; set; }
+        public FormaPagamento FormaPagamento { get; set; }
 
         public override void Validate()
         {
