@@ -15,6 +15,9 @@ namespace QuickBuy.Repositorio.Configurador
 
             builder.Property(I => I.Qntd)
                    .IsRequired();
+
+            builder.Property(I => I.PedidoId)
+                   .IsRequired();
         }
     }
 }

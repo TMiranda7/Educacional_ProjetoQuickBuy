@@ -12,7 +12,8 @@ namespace QuickBuy.Dominio.Entities
 
         public override void Validate()
         {
-            if (string.IsNullOrEmpty(descricao))
+            throw new System.NotImplementedException();
+           /* if (string.IsNullOrEmpty(descricao))
             {
                 AdicionarCritica("o item não tem descricao");
             }
@@ -20,6 +21,7 @@ namespace QuickBuy.Dominio.Entities
             {
                 AdicionarCritica("o item não tem preço definido");
             }
+            */
         }
     }
 }

@@ -1,11 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Options;
 using QuickBuy.Dominio.Entities;
 using QuickBuy.Dominio.ObjetoValor;
 using QuickBuy.Repositorio.Configurador;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace QuickBuy.Repositorio.Contexto
 {
@@ -28,6 +24,12 @@ namespace QuickBuy.Repositorio.Contexto
             modelBuilder.ApplyConfiguration(new ProdutoConfiguration());
             modelBuilder.ApplyConfiguration(new ItemPedidoConfiguration());
             modelBuilder.ApplyConfiguration(new FormaPagamentoConfiguration());
+
+            modelBuilder.Entity<FormaPagamento>().HasData(
+                new FormaPagamento() { Id= 1 , Descricao="Forma Cartão",Nome="Cartao" },
+                new FormaPagamento() { Id= 2 , Descricao="Forma Boleto" , Nome="Boleto"},
+                new FormaPagamento() { Id= 3, Descricao = "Forma Depósito", Nome = "Deposito" }
+            );
 
             base.OnModelCreating(modelBuilder);
         }

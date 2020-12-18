@@ -9,7 +9,7 @@ namespace QuickBuy.Dominio.Entities
     public class Pedido : Entity
     {
         public int Id { get; set; }
-        public int idUsuario { get; set; }
+        public int UsuarioId { get; set; }
         public virtual Usuario Usuario { get; set; }
         public DateTime dataCompra { get; set; }
         public DateTime dataEntrega { get; set; }
@@ -18,9 +18,9 @@ namespace QuickBuy.Dominio.Entities
         public string Cidade { get; set; }
         public string Estado { get; set; }
         public int numeroEnd { get; set; }
-        public ICollection<ItemPedido> ItensPedidos { get;set;}
-        public int IdFormaPagamento { get; set; }
-        public FormaPagamento FormaPagamento { get; set; }
+        public virtual ICollection<ItemPedido> ItensPedidos { get;set;}
+        public int FormaPagamentoId { get; set; }
+        public virtual FormaPagamento FormaPagamento { get; set; }
 
         public override void Validate()
         {

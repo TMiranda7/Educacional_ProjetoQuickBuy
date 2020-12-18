@@ -12,19 +12,28 @@ namespace QuickBuy.Dominio.Entities
 
         public bool EValido
         {
-            get { return _mensagem.Any(); }
+            get 
+            { 
+                return !_mensagem.Any(); 
+            }
         }
 
-        protected List<string> Mensagem
+        protected List<string> MensagemValidacao
         {
-            get { return _mensagem ??( _mensagem = new List<string>()); }
+            get
+            {
+                return _mensagem ??( _mensagem = new List<string>());
+            }
+        }
+
+        protected void LimparValidacao()
+        {
+            _mensagem.Clear();
         }
 
         public void AdicionarCritica (string msg )
         {
-            Mensagem.Add(msg);
+            MensagemValidacao.Add(msg);
         }
-
-
     }
 }

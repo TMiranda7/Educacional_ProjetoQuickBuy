@@ -28,10 +28,19 @@ namespace QuickBuy.Repositorio.Configurador
                    .IsRequired()
                    .HasMaxLength(50);
 
+            builder.Property(P => P.dataCompra)
+                   .IsRequired();
+
+            builder.Property(P => P.dataEntrega)
+                   .IsRequired();
+
             builder.Property(P => P.numeroEnd)
                    .IsRequired();
 
-            //builder.HasOne(P => P.FormaPagamento).WithMany(P => P.Id)
+            builder.HasMany(P => P.ItensPedidos)
+                   .WithOne(P => P.Pedido);
+
+            builder.HasOne(P => P.FormaPagamento);
         }
     }
 }

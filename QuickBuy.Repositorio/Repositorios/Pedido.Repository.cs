@@ -1,13 +1,14 @@
 ﻿using QuickBuy.Dominio.Contrato;
 using QuickBuy.Dominio.Entities;
-using System;
-using System.Collections.Generic;
-using System.Text;
+using QuickBuy.Repositorio.Contexto;
 
 namespace QuickBuy.Repositorio.Repositorios
 {
-    public class PedidoRepository : BaseRepository<Pedido> , IPedidoRepository
+    public class PedidoRepository : BaseRepository<Pedido>, IPedidoRepository
     {
+        public PedidoRepository(QuickBayContext quickBayContext) : base(quickBayContext)
+        {
 
+        }
     }
 }
